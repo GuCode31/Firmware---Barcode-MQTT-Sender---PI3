@@ -1,5 +1,7 @@
 # ESP32 + DHT22 + Scanner de Código de Barras + MQTT
 
+![image](https://github.com/user-attachments/assets/24a2e63d-14c2-4c07-ac94-6268887d2c87)
+
 Este projeto utiliza um ESP32 para:
 
 - Ler códigos de barras via UART (Serial2)
