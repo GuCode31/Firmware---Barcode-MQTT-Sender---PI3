@@ -21,6 +21,8 @@ PubSubClient client(espClient);
 char barcode[15] = {'\0',};
 char *barcode_ptr = barcode;
 
+uint16_t cont_msg =0;
+
 void setup_wifi();
 void reconnect();
 void resetBarcodeBuffer();
@@ -126,9 +128,10 @@ void processaSerial2() {
 
       // Formata JSON
       static char jsonBuffer[80];
+      cont_msg ++;
       snprintf(jsonBuffer, sizeof(jsonBuffer),
-               "{\"codigo\":\"%s\",\"temperatura\":%.1f,\"umidade\":%.1f}",
-               barcode, temperatura, umidade);
+               "{\"codigo\":\"%s\",\"temperatura\":%.1f,\"umidade\":%.1f,\"id_msg\":%d}",
+               barcode, temperatura, umidade, cont_msg);
 
       // Publica no MQTT
       client.publish("univesp/Pi3", jsonBuffer);
